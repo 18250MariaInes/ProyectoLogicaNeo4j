@@ -1,5 +1,17 @@
 //MATCH (n) DETACH DELETE n
 //MATCH (n) RETURN n;
+//trae coxiones de un pais
+//MATCH (p:Pais {nombre: "Guatemala"})-[:CONECTA]->(p2:Pais) RETURN p2.nombre;
+//Trae hotel de pais
+//MATCH (p:Pais {nombre: "Guatemala"})-[:HOSPEDAJE]->(h:Hotel) RETURN h.nombre;
+
+//shortest path
+//MATCH (start:Pais{nombre:"Guatemala"}), (end:Pais{nombre:"Egipto"})
+CALL algo.shortestPath.stream(start, end, "precio")
+YIELD nodeId
+MATCH (other:Pais) WHERE id(other) = nodeId
+RETURN other.nombre AS nombre
+
 CREATE 
 // PAISES
 
@@ -43,25 +55,25 @@ CREATE
 	(pARGENTINA)-[:HOSPEDAJE]-> (pAustral),
 
 //CONEXIONES
-	(pGUATEMALA)-[:CONECTA]-> (pARGENTINA),
-	(pGUATEMALA)-[:CONECTA]-> (pPARAGUAY),
-	(pGUATEMALA)-[:CONECTA]-> (pMEXICO),
-	(pGUATEMALA)-[:CONECTA]-> (pEEUU),
-	(pBRAZIL)-[:CONECTA]-> (pGUATEMALA),
-	(pBRAZIL)-[:CONECTA]-> (pPARAGUAY),
-	(pBRAZIL)-[:CONECTA]-> (pEGIPTO),
-	(pMEXICO)-[:CONECTA]-> (pPARAGUAY),
-	(pMEXICO)-[:CONECTA]-> (pEEUU),
-	(pRUSIA)-[:CONECTA]-> (pCHINA),
-	(pCHINA)-[:CONECTA]-> (pBRAZIL),
-	(pEEUU)-[:CONECTA]-> (pITALIA),
-	(pITALIA)-[:CONECTA]-> (pRUSIA),
-	(pITALIA)-[:CONECTA]-> (pMEXICO),
-	(pITALIA)-[:CONECTA]-> (pEGIPTO),
-	(pITALIA)-[:CONECTA]-> (pIRAN),
-	(pEGIPTO)-[:CONECTA]-> (pIRAN),
-	(pEGIPTO)-[:CONECTA]-> (pCHINA),
-	(pIRAN)-[:CONECTA]-> (pCHINA),
-	(pPARAGUAY)-[:CONECTA]-> (pITALIA),
-	(pPARAGUAY)-[:CONECTA]-> (pEGIPTO),
-	(pARGENTINA)-[:CONECTA]-> (pBRAZIL)
+	(pGUATEMALA)-[:CONECTA {precio:500}]-> (pARGENTINA),
+	(pGUATEMALA)-[:CONECTA {precio:430}]-> (pPARAGUAY),
+	(pGUATEMALA)-[:CONECTA {precio:530}]-> (pMEXICO),
+	(pGUATEMALA)-[:CONECTA {precio:260}]-> (pEEUU),
+	(pBRAZIL)-[:CONECTA {precio:600}]-> (pGUATEMALA),
+	(pBRAZIL)-[:CONECTA {precio:365}]-> (pPARAGUAY),
+	(pBRAZIL)-[:CONECTA {precio:420}]-> (pEGIPTO),
+	(pMEXICO)-[:CONECTA {precio:520}]-> (pPARAGUAY),
+	(pMEXICO)-[:CONECTA {precio:540}]-> (pEEUU),
+	(pRUSIA)-[:CONECTA {precio:230}]-> (pCHINA),
+	(pCHINA)-[:CONECTA {precio:700}]-> (pBRAZIL),
+	(pEEUU)-[:CONECTA {precio:400}]-> (pITALIA),
+	(pITALIA)-[:CONECTA {precio:230}]-> (pRUSIA),
+	(pITALIA)-[:CONECTA {precio:360}]-> (pMEXICO),
+	(pITALIA)-[:CONECTA {precio:480}]-> (pEGIPTO),
+	(pITALIA)-[:CONECTA {precio:610}]-> (pIRAN),
+	(pEGIPTO)-[:CONECTA {precio:720}]-> (pIRAN),
+	(pEGIPTO)-[:CONECTA {precio:680}]-> (pCHINA),
+	(pIRAN)-[:CONECTA {precio:250}]-> (pCHINA),
+	(pPARAGUAY)-[:CONECTA {precio:450}]-> (pITALIA),
+	(pPARAGUAY)-[:CONECTA {precio:600}]-> (pEGIPTO),
+	(pARGENTINA)-[:CONECTA {precio:230}]-> (pBRAZIL)
