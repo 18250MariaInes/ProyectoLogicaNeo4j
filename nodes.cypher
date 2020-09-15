@@ -54,7 +54,7 @@ CREATE
 	(pPARAGUAY)-[:HOSPEDAJE]-> (pArmele),
 	(pARGENTINA)-[:HOSPEDAJE]-> (pAustral),
 
-//CONEXIONES
+//CONEXIONES ENTRE PAISES
 	(pGUATEMALA)-[:CONECTA {precio:500}]-> (pARGENTINA),
 	(pGUATEMALA)-[:CONECTA {precio:430}]-> (pPARAGUAY),
 	(pGUATEMALA)-[:CONECTA {precio:530}]-> (pMEXICO),
@@ -76,4 +76,58 @@ CREATE
 	(pIRAN)-[:CONECTA {precio:250}]-> (pCHINA),
 	(pPARAGUAY)-[:CONECTA {precio:450}]-> (pITALIA),
 	(pPARAGUAY)-[:CONECTA {precio:600}]-> (pEGIPTO),
-	(pARGENTINA)-[:CONECTA {precio:230}]-> (pBRAZIL)
+	(pARGENTINA)-[:CONECTA {precio:230}]-> (pBRAZIL),
+
+// RESTAURANTES
+
+	(pCaoba_Farms:Restaurante {nombre:"Caoba Farms"}),
+	(pCoco_Bambu:Restaurante {nombre:"Coco Bambu"}),
+	(pThiara:Restaurante {nombre:"Thiara"}),
+	(pDzhumbus:Restaurante {nombre:"Dzhumbus"}),
+	(pMan_Wah:Restaurante {nombre:"Man_Wah"}),
+	(pCafe_Gratitude:Restaurante {nombre:"Cafe Gratitude"}),
+	(pPanzarotti:Restaurante {nombre:"Panzarotti"}),
+	(pCulina:Restaurante {nombre:"Culina"}),
+	(pShandiz_Mashad:Restaurante {nombre:"Shandiz Mashad"}),
+	(pNa_Eustaquia:Restaurante {nombre:"Na Eustaquia"}),
+	(pSacro:Restaurante {nombre:"Sacro"}),
+
+//RELACION DE RESTAURANTE A PAIS
+	(pGUATEMALA)-[:ALIMENTACION]-> (pCaoba_Farms),
+	(pBRAZIL)-[:ALIMENTACION]-> (pCoco_Bambu),
+	(pMEXICO)-[:ALIMENTACION]-> (pThiara),
+	(pRUSIA)-[:ALIMENTACION]-> (pDzhumbus),
+	(pCHINA)-[:ALIMENTACION]-> (pMan_Wah),
+	(pEEUU)-[:ALIMENTACION]-> (pCafe_Gratitude),
+	(pITALIA)-[:ALIMENTACION]-> (pPanzarotti),
+	(pEGIPTO)-[:ALIMENTACION]-> (pCulina),
+	(pIRAN)-[:ALIMENTACION]-> (pShandiz_Mashad),
+	(pPARAGUAY)-[:ALIMENTACION]-> (pNa_Eustaquia),
+	(pARGENTINA)-[:ALIMENTACION]-> (pSacro),
+
+// LUGAR TURISTICO
+
+	(pTikal:LugarTurisco {nombre:"Tikal"}),
+	(pCristo_Redentor:LugarTurisco {nombre:"Cristo Redentor"}),
+	(pXcaret:LugarTurisco {nombre:"Xcaret"}),
+	(pPlaza_Roja:LugarTurisco {nombre:"Plaza Roja"}),
+	(pMuralla_China:LugarTurisco {nombre:"Muralla China"}),
+	(pYosemite:LugarTurisco {nombre:"Yosemite"}),
+	(pCinque_Terre:LugarTurisco {nombre:"Cinque Terre"}),
+	(pLa_Esfinge:LugarTurisco {nombre:"La Esfinge"}),
+	(pPuente_Khaju:LugarTurisco {nombre:"Puente Khaju"}),
+	(pTriple_Frontier:LugarTurisco {nombre:"Triple Frontier"}),
+	(pLaguna_Esmeralda:LugarTurisco {nombre:"Laguna Esmeralda"}),
+
+//RELACION DE LUGAR TURISTICO A PAIS
+	(pGUATEMALA)-[:ATRACCION]-> (pTikal),
+	(pBRAZIL)-[:ATRACCION]-> (pCristo_Redentor),
+	(pMEXICO)-[:ATRACCION]-> (pXcaret),
+	(pRUSIA)-[:ATRACCION]-> (pPlaza_Roja),
+	(pCHINA)-[:ATRACCION]-> (pMuralla_China),
+	(pEEUU)-[:ATRACCION]-> (pYosemite),
+	(pITALIA)-[:ATRACCION]-> (pCinque_Terre),
+	(pEGIPTO)-[:ATRACCION]-> (pLa_Esfinge),
+	(pIRAN)-[:ATRACCION]-> (pPuente_Khaju),
+	(pPARAGUAY)-[:ATRACCION]-> (pTriple_Frontier),
+	(pARGENTINA)-[:ATRACCION]-> (pLaguna_Esmeralda)
