@@ -41,8 +41,18 @@ def atraccionPais(tx, pais):
             cont = cont + 1
             print (str(cont) + ". " + pais["t.nombre"])
 
+#shortest path
+def shortestPath(tx, p1, p2):
+    print("Camino más corto y económico desde " + p1 + " a " + p2 + "\n")
+    precio="precio"
+    cont = 0
+    for pais in tx.run("MATCH (start:Pais{nombre:$p1}), (end:Pais{nombre:$p2}) CALL algo.shortestPath.stream(start, end, 'precio') YIELD nodeId MATCH (other:Pais) WHERE id(other) = nodeId RETURN other.nombre",
+           p1=p1, p2=p2):
+            cont = cont + 1
+            print (str(cont) + ". " + pais["other.nombre"])
+
 #print(conexionesPais("Guatemala"))
-print("conecto")
+print("PROYECTO 2 DE LÓGICA: ORGANIZADOR DE VIAJES")
 with driver.session() as session:
 	session.read_transaction(conexionesPais, "Guatemala")
 	print("--------------------------------------------------------")
@@ -52,3 +62,6 @@ with driver.session() as session:
 	print("--------------------------------------------------------")
 	session.read_transaction(atraccionPais, "Guatemala")
 	print("--------------------------------------------------------")
+	session.read_transaction(shortestPath, "Guatemala", "Egipto")
+	print("--------------------------------------------------------")
+	session.close()
