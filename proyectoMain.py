@@ -58,20 +58,8 @@ def validarNumero(variable):
     except ValueError:
         return False
 
-#print(conexionesPais("Guatemala"))
 print("PROYECTO 2 DE LÓGICA: ORGANIZADOR DE VIAJES")
 with driver.session() as session:
-	"""session.read_transaction(conexionesPais, "Guatemala")
-	print("--------------------------------------------------------")
-	session.read_transaction(hotelPais, "Guatemala")
-	print("--------------------------------------------------------")
-	session.read_transaction(restaurantePais, "Guatemala")
-	print("--------------------------------------------------------")
-	session.read_transaction(atraccionPais, "Guatemala")
-	print("--------------------------------------------------------")
-	session.read_transaction(shortestPath, "Guatemala", "Egipto")
-	print("--------------------------------------------------------")
-	session.close()"""
 	elec=0
 	print("------BIENVENIDO A NODOTRIP------")
 	while (elec!=6):
@@ -92,28 +80,28 @@ with driver.session() as session:
 				print("\n-_-_-_-_-_-_Paises relacionados-_-_-_-_-_-_\n")
 				pais=input("Pais: ")
 				session.read_transaction(conexionesPais, pais)
-				print("--------------------------------------------------------")
+				print("----------------------------------------------")
 			elif (elec==2):
 				print("\n-_-_-_-_-_-_Hoteles en pais-_-_-_-_-_-_\n")
 				pais=input("Pais: ")
 				session.read_transaction(hotelPais, "Guatemala")
-				print("--------------------------------------------------------")
+				print("----------------------------------------------")
 			elif (elec==3):
 				print("\n-_-_-_-_-_-_Restaurantes en pais-_-_-_-_-_-_\n")
 				pais=input("Pais: ")
 				session.read_transaction(restaurantePais, pais)
-				print("--------------------------------------------------------")
+				print("----------------------------------------------")
 			elif (elec==4):
 				print("\n-_-_-_-_-_-_Lugares turisticos en pais-_-_-_-_-_-_\n")
 				pais=input("Pais: ")
 				session.read_transaction(atraccionPais, pais)
-				print("--------------------------------------------------------")
+				print("----------------------------------------------")
 			elif (elec==5):
 				print("\n-_-_-_-_-_-_Ruta mas corta hacia destino-_-_-_-_-_-_\n")
 				p1=input("Pais de origen: ")
 				p2=input("Pais destino: ")
 				session.read_transaction(shortestPath, p1, p2)
-				print("--------------------------------------------------------")
+				print("----------------------------------------------")
 	if(elec==6):
 		print("Hasta luego!")
 		session.close()
