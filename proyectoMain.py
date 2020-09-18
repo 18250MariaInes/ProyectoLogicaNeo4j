@@ -1,4 +1,4 @@
-# Maria Ines Vasquez 18250, Camila Gonzalez 18398, Cristina Bautista 16----
+# Maria Ines Vasquez 18250, Camila Gonzalez 18398, Cristina Bautista 161260
 # Proyecto 2
 # 21/09/2020
 
@@ -84,7 +84,7 @@ with driver.session() as session:
 			elif (elec==2):
 				print("\n-_-_-_-_-_-_Hoteles en pais-_-_-_-_-_-_\n")
 				pais=input("Pais: ")
-				session.read_transaction(hotelPais, "Guatemala")
+				session.read_transaction(hotelPais, pais)
 				print("----------------------------------------------")
 			elif (elec==3):
 				print("\n-_-_-_-_-_-_Restaurantes en pais-_-_-_-_-_-_\n")
